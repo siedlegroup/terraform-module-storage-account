@@ -20,7 +20,7 @@ resource "azurerm_key_vault_key" "this" {
     "verify",
     "wrapKey"
   ]
-  expiration_date = timeadd(timestamp(), var.cmk_lifetime_in_hours)
+  expiration_date = timeadd(timestamp(), format("%sh", var.cmk_lifetime_in_hours))
 }
 
 resource "azurerm_storage_account_customer_managed_key" "this" {
